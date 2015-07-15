@@ -7,7 +7,7 @@ As Brits often say:
 
 > Everybody poops... but the queen.
 
-## Installation instructions:
+## Installation instructions
 
 1. Install Postgres
 2. Install Ruby 2.2.2
@@ -16,3 +16,7 @@ As Brits often say:
 5. Run "rake db:migate"
 6. Run "rails s"
 7. Enjoy
+
+## License
+
+[WTFPL](http://www.wtfpl.net/about/)
