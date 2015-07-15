@@ -26,4 +26,5 @@ class User < ActiveRecord::Base
   end
 
 
+  attr_accessor :login
 end
