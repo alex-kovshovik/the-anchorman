@@ -11,10 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150715193542) do
+ActiveRecord::Schema.define(version: 20150715225821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+  end
 
   create_table "tds_requests", force: :cascade do |t|
     t.integer  "user_id"
@@ -22,6 +26,25 @@ ActiveRecord::Schema.define(version: 20150715193542) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "thrones", force: :cascade do |t|
+    t.integer "toilet_id",   null: false
+    t.string  "name"
+    t.string  "description"
+  end
+
+  add_index "thrones", ["toilet_id"], name: "index_thrones_on_toilet_id", using: :btree
+
+  create_table "toilets", force: :cascade do |t|
+    t.string   "name",                  null: false
+    t.string   "description"
+    t.string   "gender",      limit: 1
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "group_id"
+  end
+
+  add_index "toilets", ["group_id"], name: "index_toilets_on_group_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -40,9 +63,11 @@ ActiveRecord::Schema.define(version: 20150715193542) do
     t.string   "uid"
     t.string   "name"
     t.string   "username"
+    t.integer  "group_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["group_id"], name: "index_users_on_group_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 

@@ -1,0 +1,15 @@
+<h1>Reservations</h1>
+
+<table class="table table-hover">
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>&nbsp;</th>
+  </tr>
+
+  <% @toilets.each do |toilet| %>
+    <td><%= toilet.name %></td>
+    <td><%= toilet.description %></td>
+    <td><button class="btn btn-sm btn-success">Reserve</button></td>
+  <% end %>
+</table>

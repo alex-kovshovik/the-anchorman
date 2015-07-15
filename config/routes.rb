@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'homes/index'
+  get 'about' => 'homes#about'
+  get 'reservations' => 'reservations#index'
 
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions", passwords: "users/passwords", omniauth_callbacks: "users/omniauth_callbacks"}, skip: [:sessions, :registrations]
 
