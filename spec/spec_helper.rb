@@ -16,7 +16,12 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
+require 'factory_girl_rails'
+
 RSpec.configure do |config|
+
+  config.include FactoryGirl::Syntax::Methods
 
   config.before(:suite) do
     DatabaseCleaner.start
@@ -96,6 +101,8 @@ RSpec.configure do |config|
   # particularly slow.
   #config.profile_examples = 10
 
+  config.expose_dsl_globally = true
+
   # Run specs in random order to surface order dependencies. If you find an
   # order dependency and want to debug it, you can fix the order by providing
   # the seed, which is printed after each run.
@@ -107,4 +114,8 @@ RSpec.configure do |config|
   # test failures related to randomization by passing the same `--seed` value
   # as the one that triggered the failure.
   Kernel.srand config.seed
+end
+
+def json(body)
+  JSON.parse(body, symbolize_names: true)
 end
