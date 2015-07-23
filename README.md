@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/aspushkinus/take_dat_shit.svg?branch=master)](https://travis-ci.org/aspushkinus/take_dat_shit)
+
 # Take Dat Shit
 
 This is a Rails application inspired by the long toilet wait times and uncertainty about taking a crap
