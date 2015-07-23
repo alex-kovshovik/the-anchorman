@@ -20,5 +20,6 @@ config/settings/*.local.yml
 config/environments/*.local.yml
 
 spec/examples.txt
+coverage/*
 
 .idea
