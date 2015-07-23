@@ -7,6 +7,8 @@ As Brits often say:
 
 > Everybody poops... but the queen.
 
+See [my blog post](http://alex.shovik.com/rails/2015/07/15/take-dat-shit.html) to find more details on the matter.
+
 ## Installation instructions
 
 1. Install Postgres
