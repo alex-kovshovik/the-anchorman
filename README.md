@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/aspushkinus/take_dat_shit.svg?branch=master)](https://travis-ci.org/aspushkinus/take_dat_shit)
+[![Build Status](https://travis-ci.org/aspushkinus/take_dat_shit.svg?branch=master)](https://travis-ci.org/aspushkinus/take_dat_shit) [![Code Climate](https://codeclimate.com/github/aspushkinus/take_dat_shit/badges/gpa.svg)](https://codeclimate.com/github/aspushkinus/take_dat_shit) [![Test Coverage](https://codeclimate.com/github/aspushkinus/take_dat_shit/badges/coverage.svg)](https://codeclimate.com/github/aspushkinus/take_dat_shit/coverage)
 
 # Take Dat Shit
 

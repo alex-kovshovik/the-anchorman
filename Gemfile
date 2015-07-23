@@ -50,6 +50,7 @@ gem 'google-analytics-rails'
 gem 'rails_config'
 gem 'validates_formatting_of'
 gem 'tzinfo-data'
+gem 'codeclimate-test-reporter', group: :test, require: nil
 
 group :development do
   gem 'better_errors'
