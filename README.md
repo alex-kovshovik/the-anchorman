@@ -13,9 +13,11 @@ As Brits often say:
 2. Install Ruby 2.2.2
 3. Install bundler
 4. Run "bundle"
-5. Run "rake db:migate"
+5. Run "rake db:create"
+6. Run "rake db:migrate"
+7. Run "rake db:seed" to seed the database with the default group, user and a toilet.
 6. Run "rails s"
-7. Enjoy
+7. Go take dat shit.
 
 ## License
 

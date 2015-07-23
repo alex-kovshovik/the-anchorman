@@ -62,7 +62,5 @@ group :development, :test do
 end
 
 group :test do
-  gem 'shoulda-matchers'
-  gem 'cucumber-rails', require: false
   gem 'database_cleaner'
 end
