@@ -10,9 +10,13 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
-//= require turbolinks
-//= require bootstrap
-
 //= require_tree .
+
+var app = angular.module('StarterApp', ['ngMaterial']);
+
+app.controller('AppCtrl', ['$scope', '$mdSidenav', function($scope, $mdSidenav){
+  $scope.toggleSidenav = function(menuId) {
+    $mdSidenav(menuId).toggle();
+  };
+
+}]);

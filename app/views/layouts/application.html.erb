@@ -1,19 +1,40 @@
-<!DOCTYPE html>
-<html>
+<html lang="en" ng-app="StarterApp">
 <head>
   <title>TDS | Take Dat Shit</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/><!-- Prelang: Analytics / Google Analytics -->
-  <%= analytics_init if Rails.env.production? %></head>
-<body>
 
-<div class="container">
-  <%= render partial: "elements/navbar" %>
-  <%= bootstrap_flash %>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
 
-  <%= yield %>
-</div>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.js"></script>
+
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+
+  <meta name="viewport" content="initial-scale=1" />
+</head>
+
+<body layout="column" ng-controller="AppCtrl">
+  <md-toolbar layout="row">
+    <div class="md-toolbar-tools">
+      <md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
+        <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
+      </md-button>
+      <h1>Take Dat Shit</h1>
+    </div>
+  </md-toolbar>
+  <div layout="row" flex>
+    <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+      Put menu items here - a vertical links like <a href="https://material.angularjs.org/latest">HERE</a>
+    </md-sidenav>
+    <div layout="column" flex id="content">
+      <md-content layout="column" flex class="md-padding">
+        Website content here: graphs, etc.
+      </md-content>
+    </div>
+  </div>
 </body>
 </html>

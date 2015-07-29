@@ -25,7 +25,8 @@ describe 'Toilets API' do
   end
 
   it 'renders errors when wrong data is submitted' do
-    patch "/toilets/#{toilet.id}", { toilet: { state: 'wrong' } }.to_json, { 'Accept' => 'application/json', 'Content-Type' => Mime::JSON.to_s }
+    # The non existing "signed" state is when vague user "signature" is left on the toilet after the flush.
+    patch "/toilets/#{toilet.id}", { toilet: { state: 'signed' } }.to_json, { 'Accept' => 'application/json', 'Content-Type' => Mime::JSON.to_s }
 
     expect(response.status).to eq(422)
     expect(response.content_type).to eq(Mime::JSON)

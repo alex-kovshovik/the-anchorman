@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  get 'about' => 'homes#about'
-  get 'reservations' => 'reservations#index'
-
   resources :toilets
-  resources :tds_requests
   resources :groups
   resources :users
 
