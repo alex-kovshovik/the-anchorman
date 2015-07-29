@@ -11,7 +11,7 @@ class CreateToiletsSchema < ActiveRecord::Migration
 
     create_table :toilets do |t|
       t.integer :group_id, null: false
-      t.string :status, limit: 32, null: false, default: 'available'
+      t.string :state, limit: 32, null: false, default: 'available'
       t.string :name, null: false
       t.string :description
       t.string :gender, null: false, default: 'M', limit: 1
@@ -24,7 +24,7 @@ class CreateToiletsSchema < ActiveRecord::Migration
     create_table :tds_requests do |t|
       t.integer :user_id, null: false
       t.integer :toilet_id, null: false
-      t.string :status, null: false, default: 'pending'
+      t.string :state, null: false, default: 'pending'
 
       t.timestamps
     end

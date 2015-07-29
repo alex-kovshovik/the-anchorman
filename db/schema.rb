@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150715193542) do
+ActiveRecord::Schema.define(version: 20150729041559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20150715193542) do
   create_table "tds_requests", force: :cascade do |t|
     t.integer  "user_id",                        null: false
     t.integer  "toilet_id",                      null: false
-    t.string   "status",     default: "pending", null: false
+    t.string   "state",      default: "pending", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20150715193542) do
 
   create_table "toilets", force: :cascade do |t|
     t.integer  "group_id",                                     null: false
-    t.string   "status",      limit: 32, default: "available", null: false
+    t.string   "state",       limit: 32, default: "available", null: false
     t.string   "name",                                         null: false
     t.string   "description"
     t.string   "gender",      limit: 1,  default: "M",         null: false
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20150715193542) do
     t.datetime "updated_at"
   end
 
-  add_index "toilets", ["group_id", "status"], name: "idx_toilets_group_status", using: :btree
+  add_index "toilets", ["group_id", "state"], name: "idx_toilets_group_status", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.integer  "group_id",                             null: false
