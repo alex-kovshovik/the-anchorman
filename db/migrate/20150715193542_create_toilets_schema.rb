@@ -19,7 +19,7 @@ class CreateToiletsSchema < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :toilets, [:group_id, :status], name: 'idx_toilets_group_status'
+    add_index :toilets, [:group_id, :state], name: 'idx_toilets_group_state'
 
     create_table :tds_requests do |t|
       t.integer :user_id, null: false
