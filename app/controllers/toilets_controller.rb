@@ -9,7 +9,12 @@ class ToiletsController < ApplicationController
   end
 
   def update
-    toilet = Toilet.find(params[:id])
+    toilet = Toilet.find_by(id: params[:id])
+
+    if toilet.nil?
+      head :not_found
+      return
+    end
 
     if toilet.update(toilet_params)
       render json: toilet, status: :ok

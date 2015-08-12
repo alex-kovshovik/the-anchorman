@@ -32,4 +32,9 @@ describe 'Toilets API' do
     expect(response.content_type).to eq(Mime::JSON)
   end
 
+  it 'responds not_found when toilet not found' do
+    patch "/toilets/-1"
+    expect(response.status).to eq(404)
+  end
+
 end

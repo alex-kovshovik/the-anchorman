@@ -1,22 +1,27 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
+//= require 'app/Toilets'
+//= require 'app/ToiletController'
+//= require 'app/ToiletService'
 //
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file.
-//
-// Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
-// about supported directives.
-//
-//= require_tree .
+//= require_self
 
-var app = angular.module('StarterApp', ['ngMaterial']);
+angular
+    .module('starterApp', ['ngMaterial', 'ngResource', 'toilets'])
+    .config(function( $mdIconProvider, $mdThemingProvider ) {
+      // Configure the app to use "shitty" theme.
+      $mdThemingProvider.theme('default')
+          .primaryPalette('deep-orange')
+          .accentPalette('red');
 
-app.controller('AppCtrl', ['$scope', '$mdSidenav', function($scope, $mdSidenav){
-  $scope.toggleSidenav = function(menuId) {
-    $mdSidenav(menuId).toggle();
-  };
-
-}]);
+      // Register the toilet `avatar` icons
+      $mdIconProvider
+          .defaultIconSet("./images/svg/avatars.svg", 128)
+          .icon("menu", "./images/svg/menu.svg", 24)
+          .icon("share", "./images/svg/share.svg", 24)
+          .icon("google_plus", "./images/svg/google_plus.svg" , 512)
+          .icon("hangouts"   , "./images/svg/hangouts.svg"    , 512)
+          .icon("twitter"    , "./images/svg/twitter.svg"     , 512)
+          .icon("phone"      , "./images/svg/phone.svg"       , 512);
+    })
+    .run(function($log){
+      //$log.debug("starterApp + ngMaterial running...");
+    });

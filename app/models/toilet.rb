@@ -6,7 +6,7 @@ class Toilet < ActiveRecord::Base
   aasm column: 'state' do
     state :available, initial: true
     state :occupied
-    state :destroyed # Every surface inside "the cell" is sharted on.
+    state :destroyed # Every surface inside "the cell" is sharted on, or somebody was in there for at least 20 minutes: DO NOT GO NEAR THAT PLACE
 
     event :occupy do
       transitions from: [:destroyed, :available], to: :occupied

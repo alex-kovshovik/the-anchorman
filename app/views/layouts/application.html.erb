@@ -1,40 +1,60 @@
-<html lang="en" ng-app="StarterApp">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <title>TDS | Take Dat Shit</title>
 
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.js"></script>
-
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-
-  <meta name="viewport" content="initial-scale=1" />
+  <%= stylesheet_link_tag 'application', media: 'all' %>
 </head>
 
-<body layout="column" ng-controller="AppCtrl">
-  <md-toolbar layout="row">
-    <div class="md-toolbar-tools">
-      <md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
-        <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
-      </md-button>
-      <h1>Take Dat Shit</h1>
-    </div>
+<body layout="column" ng-app="starterApp" ng-controller="ToiletController as tl">
+  <!-- Container #1 -->
+  <md-toolbar layout="row" >
+    <md-button class="menu" aria-label="Show menu" hide-gt-sm ng-click="tl.toggleList()">
+      <md-icon md-svg-icon="menu" ></md-icon>
+    </md-button>
+    <h1>Take Dat Shit - Exquisite Toilet Reservations App</h1>
   </md-toolbar>
-  <div layout="row" flex>
-    <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
-      Put menu items here - a vertical links like <a href="https://material.angularjs.org/latest">HERE</a>
+
+  <!-- Container #2 -->
+  <div flex layout="row">
+
+    <!-- Container #3 -->
+    <md-sidenav class="md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+      <md-list>
+        <md-item ng-repeat="it in tl.toilets">
+          <md-button ng-click="tl.selectToilet(it)" ng-class="{'selected' : it === tl.selected }">
+            <md-icon md-svg-icon="svg-1" class="avatar"></md-icon>
+            {{it.name}}
+          </md-button>
+        </md-item>
+      </md-list>
     </md-sidenav>
-    <div layout="column" flex id="content">
-      <md-content layout="column" flex class="md-padding">
-        Website content here: graphs, etc.
-      </md-content>
-    </div>
+
+    <!-- Container #4 -->
+    <md-content flex id="content">
+      <md-icon md-svg-icon="svg-1" class="avatar"></md-icon>
+      <h2>{{tl.selected.name}}</h2>
+      <p>{{tl.selected.content}}</p>
+
+      <md-button class="share" md-no-ink aria-label="Share" ng-click="tl.share($event)">
+        <md-icon md-svg-icon="share" ></md-icon>
+      </md-button>
+    </md-content>
+
   </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-animate.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-aria.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/0.10.0/angular-material.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-resource.min.js"></script>
+  <%= javascript_include_tag 'application' %>
 </body>
 </html>
