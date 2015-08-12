@@ -31,9 +31,6 @@ gem 'spring',        group: :development
 # Use unicorn as the app server
 # gem 'unicorn'
 
-# Use Capistrano for deployment
-gem 'capistrano-rails', group: :development
-
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
@@ -54,6 +51,12 @@ gem 'aasm'
 group :development do
   gem 'better_errors'
   gem 'pry-rails'
+
+  # Deploy with Capistrano
+  gem 'capistrano'
+  gem 'capistrano-rvm'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
 end
 
 group :development, :test do
