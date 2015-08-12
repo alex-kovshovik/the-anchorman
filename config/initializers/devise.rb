@@ -260,4 +260,8 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
   config.omniauth :facebook, "", ENV['FACEBOOK_SECRET_ID']
+
+  # TODO: replace with the environment variable.
+  # This is not very secure and we don't want to put secret keys in the source code, but it would do for now.
+  config.secret_key = '552abacb4b48e25e7a9176d7b2ca71af8ab0a6365d6036bc59013b14b0c6e63e74b653ad410f8af9a60ee7cbc2ed6be4d2b7738e450a18a27009d49872d2f061'
 end
