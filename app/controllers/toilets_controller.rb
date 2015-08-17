@@ -1,5 +1,7 @@
 class ToiletsController < ApplicationController
 
+  skip_before_action :verify_authenticity_token
+
   def index
     toilets = Toilet.all
 
