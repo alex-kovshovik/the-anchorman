@@ -23,12 +23,13 @@ set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/
 
 namespace :deploy do
 
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
+  after :restart, :restart_passenger do
+    on roles(:app), in: :groups, limit: 3, wait: 10 do
       within release_path do
         execute :touch, 'tmp/restart.txt'
       end
     end
   end
 
+  after :finishing, 'deploy:restart_passenger'
 end
