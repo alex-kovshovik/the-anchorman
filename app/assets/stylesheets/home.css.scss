@@ -205,30 +205,6 @@ nav ul a {
   }
 }
 
-
-/* Preloader */
-#preloader {
-  position: fixed;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
-  background-color:#fff; /* change if the mask should have another color then white */
-  z-index:1200; /* makes sure it stays on top */
-}
-
-#status {
-  width:200px;
-  height:200px;
-  position:absolute;
-  left:50%; /* centers the loading animation horizontally one the screen */
-  top:50%; /* centers the loading animation vertically one the screen */
-  background-image:url(../img/status.gif); /* path to your loading animation */
-  background-repeat:no-repeat;
-  background-position:center;
-  margin:-100px 0 0 -100px; /* is width and height divided by two */
-}
-
 @media only screen and (max-width: 480px) {
   .text_h {
     padding: 4% 0;
@@ -279,4 +255,22 @@ nav a.button-collapse {
 
 footer.page-footer {
   margin-top: 0px !important;
+}
+
+span.toilet_available {
+  padding: 20px;
+  background-color: lime;
+  font-weight: bold;
+  -webkit-box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.75);
+}
+
+span.toilet_occupied {
+  padding: 20px;
+  background-color: red;
+  font-weight: normal;
+  -webkit-box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.75);
 }
