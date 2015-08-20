@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :toilets
+  resources :toilets do
+    patch 'keepalive', on: :member
+  end
+
   resources :groups
   resources :users
 

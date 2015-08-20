@@ -45,5 +45,12 @@ describe 'Toilets API' do
     expect(response.status).to eq(200)
   end
 
+  it 'updates keep alive timestamp' do
+    patch "/toilets/#{toilet.id}/keepalive", nil, { 'Accept' => 'application/json', 'Content-Type' => Mime::JSON.to_s }
+
+    expect(response.status).to eq(200)
+    expect(toilet.reload.last_keep_alive_at.utc).to be_within(0.2.second).of Time.now.utc
+  end
+
 
 end

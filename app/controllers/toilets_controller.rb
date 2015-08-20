@@ -2,7 +2,7 @@ class ToiletsController < ApplicationController
 
   skip_before_action :verify_authenticity_token
 
-  before_action :find_toilet, only: [:show, :update]
+  before_action :find_toilet, only: [:show, :update, :keepalive]
 
   def index
     toilets = Toilet.all
@@ -13,13 +13,21 @@ class ToiletsController < ApplicationController
   end
 
   def show
-    respond_to do |format|
-      format.json { render json: @toilet, status: :ok }
-    end
+    # respond_to do |format|
+    #   format.json { render json: @toilet, status: :ok }
+    # end
   end
 
   def update
     if @toilet.update(toilet_params)
+      render json: @toilet, status: :ok
+    else
+      render json: @toilet.errors, status: :unprocessable_entity
+    end
+  end
+
+  def keepalive
+    if @toilet.update_attribute('last_keep_alive_at', Time.now.utc)
       render json: @toilet, status: :ok
     else
       render json: @toilet.errors, status: :unprocessable_entity
