@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150729041559) do
+ActiveRecord::Schema.define(version: 20150819214301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 20150729041559) do
 
   add_index "tds_requests", ["toilet_id"], name: "index_tds_requests_on_toilet_id", using: :btree
   add_index "tds_requests", ["user_id"], name: "index_tds_requests_on_user_id", using: :btree
+
+  create_table "toilet_transactions", force: :cascade do |t|
+    t.integer  "toilet_id",             null: false
+    t.string   "event",      limit: 16
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "toilet_transactions", ["toilet_id", "created_at"], name: "index_toilet_transactions_on_toilet_id_and_created_at", using: :btree
 
   create_table "toilets", force: :cascade do |t|
     t.integer  "group_id",                                     null: false

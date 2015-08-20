@@ -2,6 +2,9 @@ class Toilet < ActiveRecord::Base
   include AASM
 
   belongs_to :group
+  has_many :toilet_transactions
+
+  after_update :record_transaction
 
   aasm column: 'state' do
     state :available, initial: true
@@ -23,6 +26,10 @@ class Toilet < ActiveRecord::Base
     event :clean do
       transitions from: :destroyed, to: :available
     end
+  end
+
+  def record_transaction
+    ToiletTransaction.create!(toilet_id: self.id, event: self.state)
   end
 
 end

@@ -15,13 +15,15 @@ describe 'Toilets API' do
     expect(toilets.first[:name]).to eq('Wonky')
   end
 
-  it 'updates toilet status' do
+  it 'updates toilet status and records transaction' do
     patch "/toilets/#{toilet.id}", { toilet: { state: 'occupied' } }.to_json, { 'Accept' => 'application/json', 'Content-Type' => Mime::JSON.to_s }
 
     expect(response).to be_success
     expect(response.content_type).to eq(Mime::JSON)
 
     expect(toilet.reload.occupied?).to be_truthy
+
+    expect(ToiletTransaction.count).to eq(1)
   end
 
   it 'renders errors when wrong data is submitted' do
@@ -36,5 +38,12 @@ describe 'Toilets API' do
     patch "/toilets/-1"
     expect(response.status).to eq(404)
   end
+
+  it 'shows one toilet' do
+    get "/toilets/#{toilet.id}", nil, { 'Accept' => 'application/json'}
+
+    expect(response.status).to eq(200)
+  end
+
 
 end
