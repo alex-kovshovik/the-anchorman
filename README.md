@@ -29,11 +29,12 @@ To calculate the length of all "transactions", run the following SQL:
 
 ```sql
 select
- id, event,
- case when event = 'available' then to_char(created_at - lag(created_at) over (order by created_at), 'HH24:MI:SS') else '' end as time
+  id, event,
+  case when event = 'available' then to_char(created_at - lag(created_at) over (order by created_at), 'MI:SS') else '' end as shitting,
+  case when event = 'occupied' then to_char(created_at - lag(created_at) over (order by created_at), 'HH24:MI:SS') else '' end as idling
 from toilet_transactions
 where toilet_id = 1
-  and created_at > '2015-08-20 14:00:00';
+and created_at > '2015-08-20 14:00:00';
 ```
 
 ## License
