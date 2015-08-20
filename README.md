@@ -23,6 +23,14 @@ See [my blog post](http://alex.shovik.com/rails/2015/07/15/take-dat-shit.html) t
 6. Run "rails s"
 7. Go take dat shit.
 
+## Research queries
+
+To calculate the length of all "transactions", run the following SQL:
+
+```sql
+select id, event, case when event = 'available' then to_char(created_at - lag(created_at) over (order by created_at), 'HH24:MI:SS') else '' end as time from toilet_transactions where toilet_id = 1 and created_at > '2015-08-20 14:00:00';
+```
+
 ## License
 
 [WTFPL](http://www.wtfpl.net/about/)
