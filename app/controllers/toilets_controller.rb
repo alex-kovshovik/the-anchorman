@@ -5,33 +5,21 @@ class ToiletsController < ApplicationController
   before_action :find_toilet, only: [:show, :update, :keepalive]
 
   def index
-    toilets = Toilet.all
-
-    respond_to do |format|
-      format.json { render json: toilets, status: :ok }
-    end
-  end
-
-  def show
-    # respond_to do |format|
-    #   format.json { render json: @toilet, status: :ok }
-    # end
+    @toilets = Toilet.all
   end
 
   def update
     if @toilet.update(toilet_params)
-      render json: @toilet, status: :ok
+      render 'show'
     else
       render json: @toilet.errors, status: :unprocessable_entity
     end
   end
 
   def keepalive
-    if @toilet.update_attribute('last_keep_alive_at', Time.now.utc)
-      render json: @toilet, status: :ok
-    else
-      render json: @toilet.errors, status: :unprocessable_entity
-    end
+    @toilet.update_column('last_keep_alive_at', Time.now.utc)
+
+    head :ok
   end
 
   private
