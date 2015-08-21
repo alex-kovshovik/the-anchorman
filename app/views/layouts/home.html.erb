@@ -195,12 +195,12 @@
           $('#toilet_state').removeClass('toilet-occupied');
           $('#toilet_state').removeClass('toilet-offline');
           $('#toilet_state').addClass('toilet-available');
-          $('#toilet_state').html('The toilet is <b>AVAILABLE, RUN!</b> :)')
+          $('#toilet_state').html('<b>AVAILABLE</b> since ' + data.state_ago + ' ago :)')
         } else {
           $('#toilet_state').removeClass('toilet-available');
           $('#toilet_state').removeClass('toilet-offline');
           $('#toilet_state').addClass('toilet-occupied');
-          $('#toilet_state').html('The toilet is <b>OCCUPIED</b> :(')
+          $('#toilet_state').html('<b>OCCUPIED</b> since ' + data.state_ago + ' ago :(')
         }
       });
 
