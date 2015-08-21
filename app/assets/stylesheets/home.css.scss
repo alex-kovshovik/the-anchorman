@@ -257,20 +257,59 @@ footer.page-footer {
   margin-top: 0px !important;
 }
 
-span.toilet_available {
-  padding: 20px;
+p.toilet-available {
   background-color: lime;
   font-weight: bold;
-  -webkit-box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.75);
-  -moz-box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.75);
-  box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.75);
 }
 
-span.toilet_occupied {
-  padding: 20px;
+p.toilet-occupied {
   background-color: red;
   font-weight: normal;
-  -webkit-box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.75);
-  -moz-box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.75);
-  box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.75);
 }
+
+@media all and (min-width: 1160px) {
+  p.toilet {
+    padding: 15px;
+    font-size: xx-large;
+  }
+
+  p.toilet_occupied {
+    padding: 15px;
+    font-size: xx-large;
+  }
+}
+
+@media all and (min-width: 800px) and (max-width: 1159px) {
+  p.toilet {
+    padding: 15px;
+    font-size: x-large;
+  }
+
+  p.toilet_occupied {
+    padding: 15px;
+    font-size: x-large;
+  }
+}
+
+@media all and (min-width: 600px) and (max-width: 799px) {
+  p.toilet {
+    padding: 15px;
+    font-size: large;
+  }
+
+  p.toilet_occupied {
+    padding: 15px;
+    font-size: large;
+  }
+}
+
+@media all and (max-width: 599px) {
+  p.toilet {
+    padding: 10px;
+  }
+
+  p.toilet_occupied {
+    padding: 10px;
+  }
+}
+

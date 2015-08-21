@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :toilets do
+  resources :toilets, :defaults => {format: :json} do
     patch 'keepalive', on: :member
   end
 

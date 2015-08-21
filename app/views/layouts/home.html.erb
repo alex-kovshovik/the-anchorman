@@ -47,8 +47,8 @@
     </h1>
 
     <div class="row">
-      <div class="col s6 offset-s6">
-        <span id="toilet_state" class="flow-text white-text">We take our crap seriously.</span>
+      <div class="container">
+        <p id="toilet_state" class="z-depth-4 white-text toilet toilet-available center-align">We take our crap seriously.</p>
       </div>
     </div>
   </div>
@@ -169,12 +169,12 @@
     function updateStatus() {
       $.getJSON("/toilets/1", function(data) {
         if (data.state == 'available') {
-          $('#toilet_state').removeClass('toilet_occupied');
-          $('#toilet_state').addClass('toilet_available');
+          $('#toilet_state').removeClass('toilet-occupied');
+          $('#toilet_state').addClass('toilet-available');
           $('#toilet_state').html('The toilet is AVAILABLE, RUN! :)')
         } else {
-          $('#toilet_state').addClass('toilet_occupied');
-          $('#toilet_state').removeClass('toilet_available');
+          $('#toilet_state').addClass('toilet-occupied');
+          $('#toilet_state').removeClass('toilet-available');
           $('#toilet_state').html('The toilet is occupied :(')
         }
       });
