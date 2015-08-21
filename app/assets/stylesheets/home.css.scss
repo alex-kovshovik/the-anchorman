@@ -259,11 +259,17 @@ footer.page-footer {
 
 p.toilet-available {
   background-color: lime;
-  font-weight: bold;
+  font-weight: normal;
 }
 
 p.toilet-occupied {
   background-color: red;
+  font-weight: normal;
+}
+
+p.toilet-offline {
+  background-color: black;
+  color: black;
   font-weight: normal;
 }
 

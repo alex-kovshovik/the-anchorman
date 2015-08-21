@@ -168,14 +168,21 @@
   $(document).ready(function() {
     function updateStatus() {
       $.getJSON("/toilets/1", function(data) {
-        if (data.state == 'available') {
+        if (data.keep_alive_ago > 65.0) {
           $('#toilet_state').removeClass('toilet-occupied');
-          $('#toilet_state').addClass('toilet-available');
-          $('#toilet_state').html('The toilet is AVAILABLE, RUN! :)')
-        } else {
-          $('#toilet_state').addClass('toilet-occupied');
           $('#toilet_state').removeClass('toilet-available');
-          $('#toilet_state').html('The toilet is occupied :(')
+          $('#toilet_state').addClass('toilet-offline');
+          $('#toilet_state').html('The toilet is <b>OFFLINE!</b> Blame <u>David G.</u>')
+        } else if (data.state == 'available') {
+          $('#toilet_state').removeClass('toilet-occupied');
+          $('#toilet_state').removeClass('toilet-offline');
+          $('#toilet_state').addClass('toilet-available');
+          $('#toilet_state').html('The toilet is <b>AVAILABLE, RUN!</b> :)')
+        } else {
+          $('#toilet_state').removeClass('toilet-available');
+          $('#toilet_state').removeClass('toilet-offline');
+          $('#toilet_state').addClass('toilet-occupied');
+          $('#toilet_state').html('The toilet is <b>OCCUPIED</b> :(')
         }
       });
 
