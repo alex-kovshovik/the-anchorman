@@ -191,8 +191,16 @@
 
     function updateToilet(data) {
       var now = new Date();
-      var updatedTimeAgoWords = timeAgoInWords(new Date(data.updated_at), now);
+      var updatedAt = new Date(data.updated_at);
+      var updatedTimeAgoWords = timeAgoInWords(updatedAt, now);
       var keepaliveAgoMilliseconds = now - new Date(data.last_keep_alive_at);
+
+      var additionalOccupiedEmotion = ' :(';
+
+      // Longer than 8 minutes.
+      if (now - updatedAt > 480000) {
+        additionalOccupiedEmotion = '. GEEZAZ!'
+      }
 
       if (keepaliveAgoMilliseconds > 65000) {
         $('#toilet_state').removeClass('toilet-occupied');
@@ -208,7 +216,7 @@
         $('#toilet_state').removeClass('toilet-available');
         $('#toilet_state').removeClass('toilet-offline');
         $('#toilet_state').addClass('toilet-occupied');
-        $('#toilet_state').html('<b>OCCUPIED</b> since ' + updatedTimeAgoWords + ' :(')
+        $('#toilet_state').html('<b>OCCUPIED</b> since ' + updatedTimeAgoWords + additionalOccupiedEmotion);
       }
 
       latestData = data;
