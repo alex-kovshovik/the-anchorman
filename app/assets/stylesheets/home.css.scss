@@ -267,6 +267,12 @@ p.toilet-occupied {
   font-weight: normal;
 }
 
+p.toilet-occupied:hover {
+  background-color: red;
+  font-weight: normal;
+  cursor: pointer;
+}
+
 p.toilet-offline {
   background-color: black;
   color: black;
@@ -276,24 +282,24 @@ p.toilet-offline {
 @media all and (min-width: 1160px) {
   p.toilet {
     padding: 15px;
-    font-size: xx-large;
+    font-size: x-large;
   }
 
   p.toilet_occupied {
     padding: 15px;
-    font-size: xx-large;
+    font-size: x-large;
   }
 }
 
 @media all and (min-width: 800px) and (max-width: 1159px) {
   p.toilet {
     padding: 15px;
-    font-size: x-large;
+    font-size: large;
   }
 
   p.toilet_occupied {
     padding: 15px;
-    font-size: x-large;
+    font-size: large;
   }
 }
 

@@ -187,7 +187,9 @@
   $(document).ready(function() {
     var url = 'http://' + window.location.hostname + ':3001';
     var socket = io(url);
-    var latestData = null;
+    var lastData = null;
+    var notificationEnabled = false;
+    var notificationRequested = false;
 
     function updateToilet(data) {
       var now = new Date();
@@ -202,28 +204,43 @@
         additionalOccupiedEmotion = '. GEEZAZ! Light a match!'
       }
 
+      if (notificationEnabled && notificationRequested && lastData.state != 'available' && data.state == 'available') {
+        var notification = new Notification('GO NOW! The toilet is AVAILABLE!');
+
+        notificationRequested = false;
+      }
+
       if (keepaliveAgoMilliseconds > 65000) {
+        $('#toilet_state').removeClass('red');
         $('#toilet_state').removeClass('toilet-occupied');
         $('#toilet_state').removeClass('toilet-available');
         $('#toilet_state').addClass('toilet-offline');
         $('#toilet_state').html('The toilet is <b>OFFLINE!</b> Blame <u>David G.</u>')
       } else if (data.state == 'available') {
+        $('#toilet_state').removeClass('red');
         $('#toilet_state').removeClass('toilet-occupied');
         $('#toilet_state').removeClass('toilet-offline');
         $('#toilet_state').addClass('toilet-available');
         $('#toilet_state').html('<b>AVAILABLE</b> since ' + updatedTimeAgoWords + ' :)')
       } else {
+        var occupiedPhrase = ' since ' + updatedTimeAgoWords + additionalOccupiedEmotion;
+
+        if (notificationRequested) {
+          occupiedPhrase = '. Notification requested'
+        }
+
+        $('#toilet_state').addClass('red');
         $('#toilet_state').removeClass('toilet-available');
         $('#toilet_state').removeClass('toilet-offline');
         $('#toilet_state').addClass('toilet-occupied');
-        $('#toilet_state').html('<b>OCCUPIED</b> since ' + updatedTimeAgoWords + additionalOccupiedEmotion);
+        $('#toilet_state').html('<b>OCCUPIED</b>' + occupiedPhrase);
       }
 
-      latestData = data;
+      lastData = data;
     }
 
     function periodicUpdate() {
-      updateToilet(latestData);
+      updateToilet(lastData);
 
       setTimeout(periodicUpdate, 2000);
     }
@@ -240,6 +257,30 @@
 
     // Launch periodic toilet time update loop.
     setTimeout(periodicUpdate, 2000);
+
+    // Check user's desktop notifications permissions.
+    if ("Notification" in window) {
+      if (Notification.permission === "granted") {
+        notificationEnabled = true;
+      } else if (Notification.permission !== 'denied') {
+        Notification.requestPermission(function (permission) {
+          if (permission === "granted") {
+            notificationEnabled = true;
+          }
+        });
+      }
+    }
+
+    if (notificationEnabled) {
+      console.log('Notifications are enabled');
+    }
+
+    // Wire the "notify me" button.
+    $('#toilet_state').click(function() {
+      notificationRequested = true;
+      console.log('Notification is requested');
+    });
+
   })
 </script>
 
