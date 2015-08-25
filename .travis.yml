@@ -9,5 +9,7 @@ before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
 
+services: redis
+
 # uncomment this line if your project needs to run something other than `rake`:
 # script: bundle exec rspec spec
