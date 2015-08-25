@@ -3,8 +3,8 @@
 //
 //= require_self
 
-
 // This is borrowed from https://gist.github.com/boxnos/5896114
+// Converts time span into human readable form.
 var timeAgoInWords = function(from, to) {
   to = to ? to : Date.now();
 
@@ -26,12 +26,13 @@ var timeAgoInWords = function(from, to) {
   ];
 
   function b_search(value, lower, pos, upper) {
-    if  (data[pos][0] <= value && value < data[pos + 1][0])
+    if (data[pos][0] <= value && value < data[pos + 1][0]) {
       return data[pos];
-    else if (value < data[pos][0])
+    } else if (value < data[pos][0]) {
       return b_search(value, lower, Math.floor((lower + pos - 1) / 2), pos - 1);
-    else
+    } else {
       return b_search(value, pos + 1, Math.floor((pos + 1 + upper) / 2), upper);
+    }
   }
 
   var res = b_search(minutes, 0, Math.floor((data.length - 1) / 2), data.length - 1)[1];
