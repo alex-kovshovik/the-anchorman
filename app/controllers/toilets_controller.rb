@@ -6,11 +6,16 @@ class ToiletsController < ApplicationController
 
   def index
     @toilets = Toilet.all
+    render json: @toilets
+  end
+
+  def show
+    render json: @toilet
   end
 
   def update
     if @toilet.update(toilet_params)
-      render 'show'
+      show
     else
       render json: @toilet.errors, status: :unprocessable_entity
     end
@@ -18,6 +23,7 @@ class ToiletsController < ApplicationController
 
   def keepalive
     @toilet.update_column('last_keep_alive_at', Time.now.utc)
+    ToiletPublisher.publish(@toilet)
 
     head :ok
   end

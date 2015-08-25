@@ -29,7 +29,12 @@ class Toilet < ActiveRecord::Base
   end
 
   def record_transaction
-    ToiletTransaction.create!(toilet_id: self.id, event: self.state) if self.state_was != self.state
+    return if self.state_was == self.state
+
+    ToiletTransaction.create!(toilet_id: self.id, event: self.state)
+
+    # Publish event to the corresponding Redis channel of this toilet :)
+    ToiletPublisher.publish(self)
   end
 
 end

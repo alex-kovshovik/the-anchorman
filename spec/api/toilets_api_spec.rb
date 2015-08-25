@@ -43,6 +43,10 @@ describe 'Toilets API' do
     get "/toilets/#{toilet.id}", nil, { 'Accept' => 'application/json'}
 
     expect(response.status).to eq(200)
+
+    toilet = json(response.body)
+
+    expect(toilet[:name]).to eq('Wonky')
   end
 
   it 'updates keep alive timestamp' do
