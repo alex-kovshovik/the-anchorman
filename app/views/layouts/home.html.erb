@@ -278,7 +278,7 @@
     // Wire the "notify me" button.
     $('#toilet_state').click(function() {
       notificationRequested = true;
-      console.log('Notification is requested');
+      updateToilet(lastData);
     });
 
   })
