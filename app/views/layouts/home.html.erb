@@ -194,7 +194,7 @@
     function updateToilet(data) {
       var now = new Date();
       var updatedAt = new Date(data.updated_at);
-      var updatedTimeAgoWords = timeAgoInWords(updatedAt, now);
+      var updatedTimeAgoWords = timeAgoInWords(updatedAt);
       var keepaliveAgoMilliseconds = now - new Date(data.last_keep_alive_at);
 
       var additionalOccupiedEmotion = ' :(';
