@@ -8,6 +8,10 @@
 var timeAgoInWords = function(from) {
   var minutes = (new Date() - from) / 60000;
 
+  if (minutes < 0) {
+    minutes = 0;
+  }
+
   var data = [
     [0      , 'less than a minute ago'],
     [1      , 'a minute ago'],
