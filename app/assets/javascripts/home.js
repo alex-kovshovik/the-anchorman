@@ -5,10 +5,8 @@
 
 // This is borrowed from https://gist.github.com/boxnos/5896114
 // Converts time span into human readable form.
-var timeAgoInWords = function(from, to) {
-  to = to ? to : Date.now();
-
-  var minutes = (to - from) / 60000;
+var timeAgoInWords = function(from) {
+  var minutes = (new Date() - from) / 60000;
 
   var data = [
     [0      , 'less than a minute ago'],
