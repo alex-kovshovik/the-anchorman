@@ -192,10 +192,10 @@
     var notificationRequested = false;
 
     function updateToilet(data) {
-      var now = new Date();
-      var updatedAt = new Date(data.updated_at);
+      var now = new Date().getTime();
+      var updatedAt = new Date(data.updated_at).getTime();
       var updatedTimeAgoWords = timeAgoInWords(updatedAt, now);
-      var keepaliveAgoMilliseconds = now - new Date(data.last_keep_alive_at);
+      var keepaliveAgoMilliseconds = now - new Date(data.last_keep_alive_at).getTime();
 
       var additionalOccupiedEmotion = ' :(';
 
