@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.3'
+gem 'rails', '4.2.4'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -36,22 +36,15 @@ gem 'spring',        group: :development
 
 gem 'bundler'
 
-gem 'binding_of_caller'
-gem 'simple_form'
-gem 'devise', github: 'plataformatec/devise'
-gem 'omniauth'
-gem 'omniauth-facebook'
-gem 'google-analytics-rails'
-gem 'rails_config'
 gem 'validates_formatting_of'
 gem 'tzinfo-data'
 gem 'codeclimate-test-reporter', group: :test, require: nil
 gem 'aasm'
 gem 'redis'
 gem 'active_model_serializers'
-gem 'gon'
 
 group :development do
+  gem 'binding_of_caller'
   gem 'better_errors'
   gem 'pry-rails'
 
