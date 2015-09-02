@@ -1,7 +1,3 @@
 class HomesController < ApplicationController
-  layout 'home'
-
-  def index
-  end
-
+  layout 'application'
 end

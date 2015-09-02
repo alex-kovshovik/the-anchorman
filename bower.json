@@ -1,0 +1,21 @@
+{
+  "name": "the_anchorman",
+  "version": "0.0.0",
+  "homepage": "https://github.com/aspushkinus/take_dat_shit",
+  "authors": [
+    "Alex Kovshovik <alex@shovik.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.5",
+    "angular-ui-router": "~0.2.15",
+    "bootstrap": "~3.3.5"
+  }
+}
