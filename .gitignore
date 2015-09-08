@@ -23,3 +23,5 @@ spec/examples.txt
 coverage/*
 
 .idea
+
+public/assets

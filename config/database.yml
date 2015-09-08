@@ -13,6 +13,4 @@ test:
 
 production:
   <<: *default
-  database: take_dat_shit_production
-  username: take_dat_shit
-  password: <%= ENV['TAKE_DAT_SHIT_DATABASE_PASSWORD'] %>
+  database: take_dat_shit_development

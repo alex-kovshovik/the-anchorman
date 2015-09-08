@@ -42,6 +42,7 @@ gem 'codeclimate-test-reporter', group: :test, require: nil
 gem 'aasm'
 gem 'redis'
 gem 'active_model_serializers'
+gem 'angular-rails-templates'
 
 group :development do
   gem 'binding_of_caller'
