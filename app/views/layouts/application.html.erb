@@ -3,8 +3,16 @@
 <head>
   <title>The Anchorman</title>
 
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
+  <%# stylesheet_link_tag    'application', media: 'all' %>
+  <%# javascript_include_tag 'application' %>
+
+  <style type="text/css">
+    <%= raw Uglifier.new(:copyright => false).compile(Rails.application.assets['application.css'].to_s) %>
+  </style>
+  <script type="text/javascript">
+    <%= raw Uglifier.new(:copyright => false).compile(Rails.application.assets['application.js'].to_s) %>
+  </script>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
