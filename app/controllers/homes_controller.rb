@@ -1,3 +1,5 @@
 class HomesController < ApplicationController
-  layout 'application'
+  def index
+    render 'layouts/application'
+  end
 end
