@@ -1,22 +1,26 @@
 //= require angular
+//= require angular-resource
 //= require angular-ui-router
 //= require angular-rails-templates
 
-//= require_tree ./home
+//= require_tree ./html
 
 //= require_self
-//= require home_controller
+
+//= require_tree ./directives
+//= require_tree ./services
+
+//= require home.controller
 
 angular
-    .module("theAnchorman", ['ui.router', 'templates'])
+    .module("theAnchorman", ['ui.router', 'templates', 'ngResource'])
     .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
         $stateProvider
             .state('home', {
               url: '/home',
-              templateUrl: 'home/_home.html',
+              templateUrl: 'html/_home.html',
               controller: 'HomeController'
             });
 
         $urlRouterProvider.otherwise('home');
       }]);
-
