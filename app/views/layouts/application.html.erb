@@ -7,10 +7,10 @@
   <%# javascript_include_tag 'application' %>
 
   <style type="text/css">
-    <%= raw Uglifier.new(:copyright => false).compile(Rails.application.assets['application.css'].to_s) %>
+    <%= raw Rails.application.assets['application.css'].to_s %>
   </style>
   <script type="text/javascript">
-    <%= raw Uglifier.new(:copyright => false).compile(Rails.application.assets['application.js'].to_s) %>
+    <%= raw Rails.application.assets['application.js'].to_s %>
   </script>
 
   <%= csrf_meta_tags %>
