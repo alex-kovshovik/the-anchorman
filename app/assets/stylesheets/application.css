@@ -13,3 +13,34 @@
 *= require bootstrap/dist/css/bootstrap
 *= require_self
 */
+
+/* 0. Layout. */
+#anchorman-header {
+    color: white;
+    background-color: #2196F3;
+}
+
+/* 1. Toilet banner. */
+div.toilet-banner {
+    padding: 8px;
+    color: white;
+    -webkit-box-shadow: 4px 8px 37px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 4px 8px 37px -4px rgba(0,0,0,0.75);
+    box-shadow: 4px 8px 37px -4px rgba(0,0,0,0.75);
+}
+
+div.toilet-banner.available {
+    background-color: lime;
+}
+
+div.toilet-banner.occupied {
+    background-color: red;
+}
+
+div.toilet-banner.offline {
+    background-color: black;
+}
+
+div.toilet-status {
+    font-size: 24px;
+}

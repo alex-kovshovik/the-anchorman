@@ -1,5 +1,6 @@
-Supa toilet: {{toilet.name}}<br/>
-Description: {{toilet.description}}<br/>
-Status: <b>{{toilet.state}}</b><br/>
-Last updated: {{toilet.updated_at}}<br/>
-Last keep alive: {{toilet.last_keep_alive_at}}
+<div class="toilet-banner text-center" ng-class="toilet.state">
+  <div class="toilet-status">
+    <i class="glyphicon" ng-class="iconClass"></i>
+    <span ng-bind-html="statusText"></span>
+  </div>
+</div>
