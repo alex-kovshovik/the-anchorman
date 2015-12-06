@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20150820214351) do
     t.datetime "last_keep_alive_at"
   end
 
-  add_index "toilets", ["group_id", "state"], name: "idx_toilets_group_status", using: :btree
+  add_index "toilets", ["group_id", "state"], name: "idx_toilets_group_state", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.integer  "group_id",                             null: false

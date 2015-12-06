@@ -34,9 +34,6 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'bundler'
-
-gem 'binding_of_caller'
 gem 'simple_form'
 gem 'devise', github: 'plataformatec/devise'
 gem 'omniauth'
@@ -54,12 +51,6 @@ gem 'gon'
 group :development do
   gem 'better_errors'
   gem 'pry-rails'
-
-  # Deploy with Capistrano
-  gem 'capistrano'
-  gem 'capistrano-rvm'
-  gem 'capistrano-bundler'
-  gem 'capistrano-rails'
 end
 
 group :development, :test do

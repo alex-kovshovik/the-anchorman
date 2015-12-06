@@ -1,0 +1,18 @@
+anchorman-db.docker:
+  image: postgres:9.4.5
+# Ports are optional: when you need to connect to Postgres from the outside world.
+#  ports:
+#    - "5432:5432"
+
+anchorman-rails.docker:
+  build: .
+  command: bin/rails server --port 3000 --bind 0.0.0.0
+  ports:
+    - "3000:3000"
+  links:
+    - anchorman-db.docker
+  volumes:
+    - .:/the-anchorman
+  environment:
+    RAILS_ENV: development
+    DATABASE_URL: postgresql://postgres@anchorman-db.docker/anchorman_development
